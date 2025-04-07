@@ -20,18 +20,22 @@ def main():
 
     student_id=makeID(data[0], data[1], data[3])
     major= data[6]
+  
 
-    for line in data[5]:
-      if line== "Freshman":
+  
+    year= "none"
+    for text in data[5]:
+      if text[0]== "F":
         year="FR"
-      if line== "Sophomore":
-        year="SR"
-      if line== "Junior":
+      if text[0]== "J":
         year="JR"
-      if line=="Senior":
-        year="SR"
+      if text[0]=="S":
+        if text[1]=="o":
+            year="SO"
+        if text[1]=="e":
+            year="SR"
 
-      print(student_id, major[0:3]+"-"+year)
+    print(student_id, major[0:3]+"-"+year)
 
   #Close files in the end to save and ensure they are not damaged.
   inFile.close()
