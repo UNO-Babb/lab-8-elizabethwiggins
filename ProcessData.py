@@ -23,20 +23,24 @@ def main():
   
 
   
-    year= "none"
-    for text in data[5]:
+    year="none"
+    #print(data[5])
+   
+    for text in list(data[5]):
       if text[0]== "F":
         year="FR"
       if text[0]== "J":
         year="JR"
       if text[0]=="S":
-        if text[1]=="o":
-            year="SO"
-        if text[1]=="e":
-            year="SR"
+          year="SO"
+      if text[0]=="S" and len(text)==6:
+          year="SR"
 
     print(student_id, major[0:3]+"-"+year)
 
+    output = data[1] + "," + data[0] +"," + data[3] + "," + major[0:3]+"-" + year +"\n"
+    outFile.write(output)
+    
   #Close files in the end to save and ensure they are not damaged.
   inFile.close()
   outFile.close()
